@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1 @click="helloemit('111')">{{ msg }}click</h1>
     <h2>{{names}}</h2>
     <hello2 msg="222"></hello2>
     <p>{{message}}{{message2}}
@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue , Emit } from 'vue-property-decorator';
 import hello2 from '@/components/hello2.vue';
 
 @Component({
@@ -23,6 +23,14 @@ export default class HelloWorld extends Vue {
   // 
   @Prop() private msg: string|undefined;
   @Prop() private names!:string;
+
+
+  @Emit()
+  helloemit(n: String) {
+    // this.message = this.message + 'emit'
+    console.log(n)
+    return n
+  }
 
   //原来的data
   message='helloooo'
@@ -38,6 +46,7 @@ export default class HelloWorld extends Vue {
   //需要$emit的方法才允许外部访问
   public changeMessage (): void {
     this.message = 'Good bye'
+    
   }
   private getName(): string {
     let storeName = name
