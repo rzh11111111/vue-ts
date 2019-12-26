@@ -3,6 +3,10 @@
     <h1>{{ msg }}</h1>
     <h2>{{names}}</h2>
     <hello2 msg="222"></hello2>
+    <p>{{message}}{{message2}}
+{{reversedMessage}}
+      
+    </p>
   </div>
 </template>
 
@@ -11,6 +15,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import hello2 from '@/components/hello2.vue';
 
 @Component({
+  //组件
   components:{hello2},
 })
 export default class HelloWorld extends Vue {
@@ -18,6 +23,34 @@ export default class HelloWorld extends Vue {
   // 
   @Prop() private msg: string|undefined;
   @Prop() private names!:string;
+
+  //原来的data
+  message='helloooo'
+  message2='hellllll'
+
+  // 计算属性
+	private get reversedMessage (): string {
+  	return this.message.split('').reverse().join('')
+  }
+
+  // method
+
+  //需要$emit的方法才允许外部访问
+  public changeMessage (): void {
+    this.message = 'Good bye'
+  }
+  private getName(): string {
+    let storeName = name
+    return storeName
+  }
+
+
+	// 生命周期
+  private created ():void { }
+  private mounted ():void { }
+  private updated ():void { }
+  private destroyed ():void { }
+
 }
 </script>
 
