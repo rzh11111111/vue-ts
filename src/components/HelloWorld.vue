@@ -34,7 +34,7 @@ export default class HelloWorld extends Vue {
 
   //原来的data
   message='helloooo'
-  message2='hellllll'
+  message2='hellllll1'
 
   // 计算属性
 	private get reversedMessage (): string {
