@@ -54,9 +54,23 @@ export default class HelloWorld extends Vue {
     return storeName
   }
 
+  /**
+ 
+ @param {string} message 提示信息，比如`you have a error`
+ @param {number | string} code 错误码，数字和字符都行
+ @param {string} type 类型，请写`demo1`或者`demo2`
+ 
+ */
+
+private genErrMsg (message: string, code: number | string, type?: ('demo1' | 'demo2')): string {
+    return (message || `网络繁忙，请稍候再试`) + (code ? `(${code})` : ``)
+}
+
 
 	// 生命周期
-  private created ():void { }
+  private created ():void { 
+    // this.genErrMsg()
+  }
   private mounted ():void { }
   private updated ():void { }
   private destroyed ():void { }
