@@ -7,17 +7,17 @@
 {{reversedMessage}}
       
     </p>
-     <live2d></live2d>
+     
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue , Emit } from 'vue-property-decorator';
 import hello2 from '@/components/hello2.vue';
-import live2d from '@/components/live2d.vue'
+
 @Component({
   //组件
-  components:{hello2,live2d},
+  components:{hello2},
 })
 export default class HelloWorld extends Vue {
   //private 它就不能在声明它的类的外部访问

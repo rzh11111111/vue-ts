@@ -5,9 +5,17 @@
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
+    <live2d></live2d>
   </div>
 </template>
-
+<script>
+import live2d from '@/components/live2d.vue'
+export default {
+  components:{
+    live2d
+  }
+}
+</script>
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

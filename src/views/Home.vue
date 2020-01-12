@@ -9,19 +9,29 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 // @ is an alias to /src
+import { Component, Prop, Vue , Emit } from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue'
+@Component({
+  //组件
+  components:{HelloWorld},
+})
 
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  },
-  methods:{
-    hellooo(n){
-      console.log(n)
-    }
+
+export default class Home extends Vue  {
+  public hellooo (n:any): void {
+   console.log(n)
+    
+  }
+
+  beforeRouteEnter(to: any, from: any, next: () => void): void {
+    console.log('beforeRouteEnter'); 
+    next();
+  }
+   beforeRouteLeave(to: any, from: any, next: () => void): void {
+    console.log('beforeRouteLeave'); 
+    next();
   }
 
 }
