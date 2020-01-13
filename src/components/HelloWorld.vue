@@ -21,8 +21,8 @@ import hello2 from '@/components/hello2.vue';
 })
 export default class HelloWorld extends Vue {
   //private 它就不能在声明它的类的外部访问
-  // 
-  @Prop() private msg: string|undefined;
+  // ?:表示可空
+  @Prop() private msg?: string|undefined;
   @Prop() private names!:string;
 
 

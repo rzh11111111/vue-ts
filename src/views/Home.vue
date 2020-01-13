@@ -6,6 +6,7 @@
     names="111"
     @helloemit="hellooo"
     />
+    <button @click="toabout" class="homebutton"></button>
   </div>
 </template>
 
@@ -24,7 +25,9 @@ export default class Home extends Vue  {
    console.log(n)
     
   }
-
+  public toabout ():void {
+    this.$router.push('/about')
+  }
   beforeRouteEnter(to: any, from: any, next: () => void): void {
     console.log('beforeRouteEnter'); 
     next();
@@ -36,3 +39,9 @@ export default class Home extends Vue  {
 
 }
 </script>
+<style scoped>
+.homebutton{
+  width: 30px;
+  height: 30px;
+}
+</style>
