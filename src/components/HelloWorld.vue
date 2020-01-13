@@ -7,17 +7,17 @@
 {{reversedMessage}}
       
     </p>
-     
+     <van-button type="default">3232</van-button>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue , Emit } from 'vue-property-decorator';
 import hello2 from '@/components/hello2.vue';
-
+import {Button} from 'vant'
 @Component({
   //组件
-  components:{hello2},
+  components:{hello2,[Button.name]: Button,},
 })
 export default class HelloWorld extends Vue {
   //private 它就不能在声明它的类的外部访问

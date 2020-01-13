@@ -4,8 +4,8 @@ function resolve(dir) {
     return path.join(__dirname, dir)
 }
 const pxtoviewport = require("postcss-px-to-viewport-opt")
-const cssnext = require("postcss-cssnext")
-
+// const cssnext = require("postcss-cssnext")
+const tsImportPluginFactory = require('ts-import-plugin')
 
 
 module.exports = {
@@ -19,8 +19,32 @@ module.exports = {
         //     config.plugins.push(compress)
         // }
         // config.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/));
-
-
+       //tsImportPluginFactory按需引入vant还有vant的less，还要npm install less和less-loader
+       //引入后就和原来一样了
+        config.module.rules.push(  
+             {
+                test: /\.(jsx|tsx|js|ts)$/,
+                loader: 'ts-loader',
+                options: {
+                  transpileOnly: true,
+                  getCustomTransformers: () => ({
+                    before: [ tsImportPluginFactory( {
+                        libraryName: 'vant',
+                        libraryDirectory: 'es',
+                        style: name => `${name}/style/less` // 配置vant主题文件
+                      })]
+                  }),
+                  compilerOptions: {
+                    module: 'es2015'
+                  }
+                },
+                exclude: /node_modules/
+              })
+            
+             
+            
+        
+        
     },
     chainWebpack: (config) => {
         config.resolve.alias
