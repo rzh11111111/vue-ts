@@ -14,12 +14,7 @@ module.exports = {
     outputDir: 'dist', // 输出文件目录
     lintOnSave: false, // eslint-loader 是否在保存的时候检查
     configureWebpack: config=>{
-        // if (env === 'production') {
-        //     config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true
-        //     config.plugins.push(compress)
-        // }
-        // config.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/));
-       //tsImportPluginFactory按需引入vant还有vant的less，还要npm install less和less-loader
+       
        //引入后就和原来一样了
         config.module.rules.push(  
              {

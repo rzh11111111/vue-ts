@@ -7,7 +7,7 @@
 {{reversedMessage}}
       
     </p>
-     <van-button type="default">3232</van-button>
+     <van-button type="primary">3232</van-button>
   </div>
 </template>
 
