@@ -7,7 +7,7 @@
 {{reversedMessage}}
       
     </p>
-     <van-button type="primary">3232</van-button>
+     <van-button type="primary" @click="tosuccess">3232</van-button>
   </div>
 </template>
 
@@ -53,7 +53,10 @@ export default class HelloWorld extends Vue {
     let storeName = name
     return storeName
   }
-
+  private tosuccess():void {
+    this.$store.commit('SET_TOKEN', '111')
+    console.log(this.$store.state.success)
+  }
   /**
  
  @param {string} message 提示信息，比如`you have a error`
