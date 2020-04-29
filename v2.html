@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1. 构建一个n*n的格子(n从输入框填写) ,默认背景色都是白色,鼠标指针指上去的格子底色要变
+成红色,鼠标移出时复原
+2. 鼠标点击格子时背景色固定为蓝色,指针hover时也不变红。再次点击时复原成未点击的状态
+3. 格子大小可用css控制,底色变化用js实现 -->
+    <div>
+        <input type="number" id="cells" onBlur="cellsBlur()" />
+
+    </div>
+</body>
+<script>
+    function cellsBlur(){
+        var cells=document.getElementById("cells");
+        var str="";
+    for(var i=0;i<cells.value;i++){
+        str+="<div class='cell-h'>";
+        for(var j=0;j<cells.value;j++){
+            str+="<div class='cell'></div>";
+        }
+        str+="</div>";
+    }
+    var div = document.createElement("div");
+    div.innerHTML = str;
+
+    document.body.appendChild(div);
+
+    //调用事件函数，传入表格
+    if(cells.value>0){
+        cellEnter();
+    cells.setAttribute("disabled",true);
+    }
+    
+    }
+    function cellEnter(){
+        var divs = document.getElementsByClassName('cell')
+        console.log(divs)
+        for(let i=0;i<divs.length;i++){
+            divs[i].addEventListener("mouseover", colorHover, false);
+            divs[i].addEventListener("mouseout", colorOut, false);
+            divs[i].addEventListener("click", colorClick, false);
+        }
+        
+
+
+    }
+    function colorHover(e){
+        console.log(e)
+        if(e.target.style.background != "blue"){
+            e.target.style.background = "red"; 
+        }
+    }
+    function colorOut(e){
+        if (e.target.style.background != "blue") {
+            e.target.style.background = "white";
+        }
+    }
+        function colorClick(e) {
+        
+        
+         e.target.style.background == "blue" ?e.target.style.background= "white" :e.target.style.background= "blue";
+        
+    }
+
+</script>
+<style>
+    .cell-h{
+        display: flex;
+    }
+    .cell{
+        width:40px;
+    height:40px;
+    border:1px solid;
+    }
+</style>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 小明的女朋友最喜欢在网上买买买了，可是钱包里钞票有限，不能想买啥就买啥。
+    面对琳琅满目的物品，她想买尽可能多的种类，每种只买一件，同时总价格还不能超过预算上限。
+    于是她请小明写程序帮她找出应该买哪些物品，并算出这些物品的总价格。
+    
+    输入规范：
+    包含两个输入框，一个计算按钮。
+    第一个是预算上限。(从输入框填写)
+    第二个是用空格分隔的一组数字，代表每种物品的价格。(从输入框填写)
+    所有数字都为正整数并且不会超过10000。
+    
+    输出规范：
+    对每个输入，点击计算按钮后输出应买物品的总价格。
+    
+    输入示例1:
+    100
+    50 50
+    输出示例1:
+    100
+    
+    输入示例2:
+    188
+    50 42 9 15 105 63 14 30
+    输出示例2:
+    160
+     -->
+
+    <div>
+                <input type="number" id="money" />
+                <input type="text" id="commodity" />
+                <div onclick="count()">计算</div>
+                <input type="number" readonly id="result"></input>
+
+            </div>
+</body>
+<script>
+    var money = document.getElementById("money");
+              var commodity = document.getElementById("commodity");
+              var result = document.getElementById("result");
+              
+              function count(){
+                let all=0;
+                let arr=commodity.value.split(" ").filter(d=>d).sort(function(a,b){ 
+                        return a - b;   
+                    }).map(Number);
+                
+                if(money.value>10000||(!(/(^[1-9]\d*$)/.test(money.value)))){
+                    alert("请输入正整数并且不超过10000");
+                    return false
+                }
+                
+              
+                
+                    console.log(all,all+arr[0],arr,arr.length,Number(money.value))
+                for(let i = 0;i<arr.length;i++){
+                    if(arr[i]>10000||(!(/(^[1-9]\d*$)/.test(arr[i])))){
+                        alert("请输入正整数并且不超过10000");
+                    return false
+                    }
+
+                      if(all+arr[i]<=Number(money.value)){
+                          all=all+arr[i]
+                          console.log(all)
+                      }else {
+                          return
+                      }
+                  }
+                  result.value=all
+              }
+</script>
+</html>
